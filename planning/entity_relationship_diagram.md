@@ -1,17 +1,22 @@
 # Entity Relationship Diagram
 
-Reference the Creating an Entity Relationship Diagram final project guide in the course portal for more information about how to complete this deliverable.
-
 ## Create the List of Tables
 
-[👉🏾👉🏾👉🏾 List each table in your diagram]
+1. `users`
+2. `follows`
+3. `conversations`
+4. `messages`
+5. `communities`
+6. `community_members`
+7. `community_song_posts`
+8. `community_song_post_comments`
+9. `songs`
+10. `playlists`
+11. `playlist_songs`
+12. `song_likes`
+13. `song_reposts`
+14. `song_comments`
 
 ## Add the Entity Relationship Diagram
 
-[👉🏾👉🏾👉🏾 Include an image or images of the diagram below. You may also wish to use the following markdown syntax to outline each table, as per your preference.]
-
-| Column Name | Type | Description |
-|-------------|------|-------------|
-| id | integer | primary key |
-| name | text | name of the shoe model |
-| ... | ... | ... |
+![](/doc_imgs/tunez_ERD.png)
