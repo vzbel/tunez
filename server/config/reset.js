@@ -20,7 +20,8 @@ const createUsersTable = async () => {
         pfp_url varchar,
         bio varchar(150),
         PRIMARY KEY(id),
-        UNIQUE(email)
+        UNIQUE(email),
+        UNIQUE(username)
       );
       `);
     console.log("created users table");

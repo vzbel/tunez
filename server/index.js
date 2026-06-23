@@ -31,7 +31,7 @@ app.use(
 app.use(passport.authenticate("session"));
 
 // handle login, signup, etc
-app.use("/auth", AuthRouter);
+app.use("/api/auth", AuthRouter);
 
 // custom error handler
 app.use((err, req, res, next) => {
