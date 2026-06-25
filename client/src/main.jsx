@@ -5,6 +5,7 @@ import App from "./App.jsx";
 
 import { BrowserRouter, Routes, Route } from "react-router";
 import SignUpPage from "./pages/SignUpPage.jsx";
+import LogInPage from "./pages/LogInPage.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -12,6 +13,7 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LogInPage />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
