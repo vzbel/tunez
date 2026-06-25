@@ -1,12 +1,18 @@
 import "./App.css";
 
-import { Link } from "react-router";
+import Header from "./components/Header.jsx";
+import { Outlet } from "react-router";
+import { AuthContext } from "./contexts/AuthContext.jsx";
+import { useAuth } from "./hooks/useAuth.js";
 
 function App() {
+  const [user, setUser] = useAuth();
   return (
     <>
-      <Link to="/signup">Sign Up</Link>
-      <Link to="/login">Log In</Link>
+      <AuthContext value={[user, setUser]}>
+        <Header />
+        <Outlet />
+      </AuthContext>
     </>
   );
 }

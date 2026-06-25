@@ -29,3 +29,21 @@ export const login = async (username, password) => {
   }
 };
 
+// retrieve the currently logged in user or null if none
+export const getCurrentUser = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/me`);
+    return response.data.user;
+  } catch {
+    return null;
+  }
+};
+
+// log the current user out
+export const logout = async () => {
+  try {
+    await axios.post(`${BASE_URL}/logout`);
+  } catch (error) {
+    console.error(error);
+  }
+};

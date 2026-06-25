@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { setTimedAlert } from "../utils/alerts.js";
 import { createAccount } from "../services/auth.js";
+import { AuthContext } from "../contexts/AuthContext.jsx";
 
 const MIN_PASSWORD_LEN = 8;
 
@@ -18,6 +19,8 @@ const SignUpPage = () => {
   });
 
   const [alert, setAlert] = useState(null);
+  // user is not needed, only setUser
+  const [, setUser] = useContext(AuthContext);
 
   const handleInputChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -41,7 +44,8 @@ const SignUpPage = () => {
 
     // add account to database
     try {
-      await createAccount(email, username, password);
+      const userTmp = await createAccount(email, username, password);
+      setUser(userTmp);
       setTimedAlert("success", "Successfully created account", setAlert);
     } catch {
       setTimedAlert("danger", "Failed to create account", setAlert);

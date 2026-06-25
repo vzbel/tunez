@@ -67,13 +67,15 @@ const handleSignUp = async (req, res, next) => {
 
 const getCurrentUser = async (req, res, next) => {
   if (!req.isAuthenticated()) {
-    return res.status(401).json({ error: "not logged in" });
+    return res.status(200).json({ user: null });
   }
 
   return res.status(200).json({
-    id: req.user.id,
-    username: req.user.username,
-    profilePicture: req.user.pfp_url,
+    user: {
+      id: req.user.id,
+      username: req.user.username,
+      profilePicture: req.user.pfp_url,
+    },
   });
 };
 

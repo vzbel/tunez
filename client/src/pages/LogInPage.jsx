@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { setTimedAlert } from "../utils/alerts";
 import { login } from "../services/auth";
+import { AuthContext } from "../contexts/AuthContext.jsx";
 
 /**
  *  log in with username and password
@@ -14,6 +15,8 @@ const LogInPage = () => {
     password: "",
   });
   const [alert, setAlert] = useState(null);
+  // user is not needed, only setUser
+  const [, setUser] = useContext(AuthContext);
 
   const handleInputChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -25,7 +28,9 @@ const LogInPage = () => {
     const { username, password } = form;
     // try login
     try {
-      await login(username, password);
+      const userTmp = await login(username, password);
+      // update shared user auth context
+      setUser(userTmp);
       setTimedAlert("success", "Successfully logged in", setAlert);
     } catch {
       setTimedAlert("danger", "Failed to log in", setAlert);
