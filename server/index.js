@@ -10,6 +10,7 @@ require("./config/passportLocal.js");
 
 // routers
 const AuthRouter = require("./routes/auth.js");
+const TracksRouter = require("./routes/tracks.js");
 
 app.use(express.json());
 
@@ -32,6 +33,8 @@ app.use(passport.authenticate("session"));
 
 // handle login, signup, etc
 app.use("/api/auth", AuthRouter);
+// song retrieval, song uploads
+app.use("/api/tracks", TracksRouter);
 
 // custom error handler
 app.use((err, req, res, next) => {
@@ -39,6 +42,8 @@ app.use((err, req, res, next) => {
   switch (err.name) {
     case ErrorNames.INVALID_LOGIN:
       return res.status(401).send({ error: "invalid username or password" });
+    case ErrorNames.NO_REQ_BODY:
+      return res.status(400).send({ error: "No request body provided" });
   }
   return res.status(500).end();
 });
