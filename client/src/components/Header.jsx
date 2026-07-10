@@ -13,13 +13,16 @@ const Header = () => {
   };
 
   return (
-    <header className="navbar px-4">
+    <header className="navbar px-4 border-bottom">
       {/* logo */}
       <h1 className="fw-bold">tunez</h1>
 
       {user ? (
         // user profile picture and controls
         <nav className="nav align-items-center">
+          <Link className="btn btn-light me-3" to="upload-track">
+            upload
+          </Link>
           <p className="mb-0 me-2">{user.username}</p>
           <img
             src={user.profilePicture || DEFAULT_PFP_URL}
